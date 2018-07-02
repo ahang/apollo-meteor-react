@@ -12,11 +12,18 @@ export default {
   },
 
   Resolution: {
-    goals: resolution => {
-      return Goals.find({
+    goals: resolution => 
+      Goals.find({
         resolutionId: resolution._id
-      }).fetch()
-    }
+      }).fetch(),
+      completed: resolution => {
+        const goals = Goals.find({
+          resolutionId: resolution._id,
+        }).fetch();
+        if (goals.length === 0) return false;
+        const completedGoals = goals.filter(goal => goal.completed);
+        return goals.length === completedGoals.length;
+      }
   },
 
   Mutation: {

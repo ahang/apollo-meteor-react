@@ -12,7 +12,7 @@ import GoalsSchema from '../../api/goals/Goals.graphql';
 import GoalsResolver from '../../api/goals/resolvers';
 
 
-// dada
+// dadaa
 
 const typeDefs = [
   ResolutionsSchema,

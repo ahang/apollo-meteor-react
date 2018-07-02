@@ -5,7 +5,8 @@
 type Resolution {
   _id: String!
   name: String!
-  goals: [Goal]
+  goals: [Goal],
+  completed: Boolean
 }
 
 type Query {
