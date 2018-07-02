@@ -1,0 +1,17 @@
+# name
+# createdAt
+# [todoId]
+
+type Resolution {
+  _id: String!
+  name: String!
+  goals: [Goal]
+}
+
+type Query {
+  resolutions: [Resolution]
+}
+
+type Mutation {
+  createResolution(name: String!): Resolution
+}
