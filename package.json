@@ -1,5 +1,5 @@
 {
-  "name": "apollo",
+  "name": "apollo-meteor-react",
   "private": true,
   "scripts": {
     "start": "meteor run"

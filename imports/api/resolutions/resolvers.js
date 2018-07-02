@@ -1,8 +1,5 @@
 import Resolutions from './resolutions';
-
-// Resolutions.insert({
-//   name: 'test res'
-// });
+import Goals from '../goals/goals';
 
 export default {
   Query: {
@@ -11,6 +8,14 @@ export default {
       return Resolutions.find({
         userId
       }).fetch();
+    }
+  },
+
+  Resolution: {
+    goals: resolution => {
+      return Goals.find({
+        resolutionId: resolution._id
+      }).fetch()
     }
   },
 
