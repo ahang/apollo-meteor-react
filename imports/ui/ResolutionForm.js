@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
+import { GraphQLNonNull } from 'graphql';
 
 const createResolution = gql`
   mutation createResolution($name: String!) {
@@ -12,6 +13,10 @@ const createResolution = gql`
 
 class ResolutionForm extends Component {
 
+  state = {
+    error: null
+  }
+
   submitForm = async () => {
     this.props.createResolution({
       variables: {
@@ -20,12 +25,14 @@ class ResolutionForm extends Component {
     })
     .catch(error => {
       console.log(error)
-    })
+      this.setState({ error: error.message });
+    });
   }
 
   render() {
     return (
       <div>
+        {this.state.error && <p>{this.state.error}</p>}
         <input type='text' ref={input => (this.name = input)} />
         <button onClick={this.submitForm}>Submit</button>
       </div>
